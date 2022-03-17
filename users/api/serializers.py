@@ -19,3 +19,13 @@ class UserRegisterSerializer(ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class UserSerializer(ModelSerializer):
+    """
+    Serializer for user that returns their data but the password
+    """
+
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'username', 'first_name', 'last_name']
