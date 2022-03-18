@@ -29,3 +29,12 @@ class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'email', 'username', 'first_name', 'last_name']
+
+
+class UserUpdateSerializer(ModelSerializer):
+    """
+    Serializer that updates an user
+    """
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']
