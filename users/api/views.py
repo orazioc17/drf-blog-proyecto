@@ -7,6 +7,9 @@ from users.models import User
 
 
 class RegisterView(APIView):
+    """
+    View to register a new user
+    """
     def post(self, request):
         serializer = UserRegisterSerializer(data=request.data)  # Con esto el serializador buscara los datos que
         # tiene q buscar
@@ -18,6 +21,9 @@ class RegisterView(APIView):
 
 
 class UserView(APIView):
+    """
+    View that returns user detail
+    """
     permission_classes = [IsAuthenticated]  # COn esto solo los users autenticados podran realizar ese request
 
     def get(self, request):

@@ -7,4 +7,4 @@ class CategorySerializer(ModelSerializer):
         model = Category
         # fields = '__all__' || Esto no es la mejor forma de hacerlo porque pueden haber veces que no queramos utilizar
         # todos los campos en una peticion
-        fields = ['name', 'description']
+        fields = ['id', 'title', 'slug', 'published']

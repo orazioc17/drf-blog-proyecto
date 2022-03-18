@@ -4,6 +4,6 @@ from categories.models import Category
 
 @admin.register(Category)
 class QuestionAdmin(admin.ModelAdmin):
-    fields = ['name', 'description']
-    list_display = ('name', 'description')
-    search_fields = ['name']
+    fields = ['title', 'slug', 'published']
+    list_display = ('title', 'published')
+    search_fields = ['title']

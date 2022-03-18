@@ -3,6 +3,9 @@ from users.models import User
 
 
 class UserRegisterSerializer(ModelSerializer):
+    """
+    Serializer for user register
+    """
     class Meta:
         model = User
         # fields = '__all__' || Esto no es la mejor forma de hacerlo porque pueden haber veces que no queramos utilizar
@@ -25,7 +28,6 @@ class UserSerializer(ModelSerializer):
     """
     Serializer for user that returns their data but the password
     """
-
     class Meta:
         model = User
         fields = ['id', 'email', 'username', 'first_name', 'last_name']
