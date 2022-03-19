@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from django_filters.rest_framework import DjangoFilterBackend
 from categories.models import Category
 from categories.api.serializers import CategorySerializer
 from categories.api.permissions import IsAdminOrReadOnly
@@ -10,9 +11,11 @@ from categories.api.permissions import IsAdminOrReadOnly
 class CategoryApiViewSet(ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
     serializer_class = CategorySerializer
-    queryset = Category.objects.all()
-    # queryset = Category.objects.filter(published=True)
+    # queryset = Category.objects.all()
+    queryset = Category.objects.filter(published=True)
     lookup_field = 'slug'  # Con esto los metodos POST, PUT, PATCH y DELETE dejan de usar el id y usaran el field slug
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['title']  # De esta manera se pueden filtrar en los requests mediante query params
 
 
 # class CategoriesView(APIView):
